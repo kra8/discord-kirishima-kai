@@ -30,7 +30,10 @@ func main() {
 	discord.AddHandler(messageCreate)
 	discord.AddHandler(voiceStateUpdate)
 
-	discord.Open()
+	err = discord.Open()
+	if err != nil {
+		panic(err)
+	}
 
 	// Wait here until CTRL-C or other term signal is received.
 	fmt.Println("Kirishima is now running.  Press CTRL-C to exit.")
