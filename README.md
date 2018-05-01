@@ -12,6 +12,7 @@ https://discordapp.com/api/oauth2/authorize?client_id=376220178742116363&scope=b
 ```
 $ git clone https://github.com/kra8/discord-kirishima-kai.git
 $ cd discord-kirishima-kai
+$ go get github.com/bwmarrin/discordgo
 $ make build
 $ cp token.example token
 > tokenにあなたのアプリケーションのBot tokenを記述してください
