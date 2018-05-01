@@ -22,7 +22,7 @@ func init() {
 }
 
 func main() {
-	discord, err := discordgo.New(strings.Trim("Bot "+getToken(), "\n"))
+	discord, err := discordgo.New("Bot " + getToken())
 	if err != nil {
 		panic(err)
 	}
@@ -101,7 +101,7 @@ func getToken() string {
 		panic("Not found tokenfile.")
 	}
 
-	return string(text)
+	return strings.Trim(string(text), "\n")
 }
 
 func getSerif() string {
