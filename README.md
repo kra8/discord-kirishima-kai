@@ -1,6 +1,6 @@
 # Kirishima Kai
 
-誰かがボイスチャンネルに参加したとき、テキストチャンネルに通知します。  
+誰かがボイスチャンネルに参加したとき、テキストチャンネルに通知するDiscordのBotです。 
 
 以前DiscordPHPを利用した同様のBotを作りましたが、ライブラリのサポートが終了したため、リメイクしました。  
 
@@ -19,4 +19,4 @@ $ ./bin/kirishima-kai
 ```
 
 # LICENCE
-MIT
+[MIT](https://github.com/kra8/discord-kirishima-kai/blob/master/LICENCE)
