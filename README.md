@@ -6,7 +6,7 @@
 
 # Usage
 以下のリンクからあなたのギルドにこのBotを追加できます。  
-https://discordapp.com/api/oauth2/authorize?client_id=376220178742116363&scope=bot&permissions=0
+https://discordapp.com/api/oauth2/authorize?client_id=440799039835996170&permissions=0&redirect_uri=https%3A%2F%2Fgithub.com%2Fkra8%2Fdiscord-kirishima-kai&scope=bot
 
 もしくは、このBotを自身のアプリケーションとして動かすことができます。
 ```
