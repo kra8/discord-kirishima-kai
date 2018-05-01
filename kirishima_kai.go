@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -21,7 +22,7 @@ func init() {
 }
 
 func main() {
-	discord, err := discordgo.New("Bot " + getToken())
+	discord, err := discordgo.New(strings.Trim("Bot "+getToken(), "\n"))
 	if err != nil {
 		panic(err)
 	}
