@@ -7,6 +7,7 @@ ZIP_DIR		:= "$(NAME)-$(VERSION)"
 
 .PHONY: build
 build: clean
+	@rm -rf $(ZIP_DIR)
 	@go build -o $(BUILD_DIR)/$(NAME)
 	@mkdir $(ZIP_DIR)
 	@cp token.example $(ZIP_DIR)/token.example
