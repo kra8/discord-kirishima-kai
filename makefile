@@ -1,14 +1,12 @@
 BUILD_DIR 	:= bin
 NAME 		:= kirishima-kai
-GOOS 		:= "linux"
-GOARCH		:= "amd64"
-VERSION		:= v1.1.1
+VERSION		:= v1.1.2
 ZIP_DIR		:= "$(NAME)-$(VERSION)"
 
 .PHONY: build
-build: clean
+build-linux: clean
 	@rm -rf $(ZIP_DIR)
-	@go build -o $(BUILD_DIR)/$(NAME)
+	@GOOS=linux GOARCH=amd64 go build -o $(BUILD_DIR)/$(NAME)
 	@mkdir $(ZIP_DIR)
 	@cp token.example $(ZIP_DIR)/token.example
 	@cp $(BUILD_DIR)/$(NAME) $(ZIP_DIR)/$(NAME)
