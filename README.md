@@ -2,13 +2,14 @@
 
 誰かがボイスチャンネルに参加したとき、テキストチャンネルに通知するDiscordのBotです。 
 
-以前DiscordPHPを利用した同様のBotを作りましたが、ライブラリのサポートが終了したため、リメイクしました。  
-
 # Usage
-以下のリンクからあなたのギルドにこのBotを追加できます。  
+- 以下のリンクからあなたのギルドにこのBotを追加
 https://discordapp.com/api/oauth2/authorize?client_id=440799039835996170&permissions=0&redirect_uri=https%3A%2F%2Fgithub.com%2Fkra8%2Fdiscord-kirishima-kai&scope=bot
 
-もしくは、このBotを自身のアプリケーションとして動かすことができます。
+- 通知用のテキストチャンネルを作成します
+`notify-voice-join` という名前のテキストチャンネルを作成してください。
+
+### また、このBotを自身のアプリケーションとして動かすことができます。
 ```
 $ git clone https://github.com/kra8/discord-kirishima-kai.git
 $ cd discord-kirishima-kai
