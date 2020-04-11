@@ -1,6 +1,6 @@
 BUILD_DIR 	:= bin
 NAME 		:= kirishima-kai
-VERSION		:= v1.1.2
+VERSION		:= v1.2.0
 ZIP_DIR		:= "$(NAME)-$(VERSION)"
 
 .PHONY: build
