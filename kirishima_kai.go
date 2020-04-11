@@ -14,6 +14,7 @@ import (
 )
 
 const tokenfile = "token"
+const NotifyChannelName = "notify-voice-join"
 
 var voiceActiveUsers map[string]string
 
@@ -64,6 +65,10 @@ func messageCreate(session *discordgo.Session, message *discordgo.MessageCreate)
 }
 
 func voiceStateUpdate(session *discordgo.Session, voiceState *discordgo.VoiceStateUpdate) {
+	fmt.Println("---")
+	fmt.Println(voiceState.UserID)
+	fmt.Println(voiceState.ChannelID)
+	fmt.Println(voiceState.GuildID)
 
 	// get state updated user
 	user, err := session.User(voiceState.UserID)
@@ -85,14 +90,30 @@ func voiceStateUpdate(session *discordgo.Session, voiceState *discordgo.VoiceSta
 	}
 
 	// get default text cannel
-	cannels, err := session.GuildChannels(voiceState.GuildID)
+	channels, err := session.GuildChannels(voiceState.GuildID)
 	if err != nil {
 		return
 	}
-	defaultCannel := cannels[0]
 
-	session.ChannelMessageSend(defaultCannel.ID, joinedChannel.Name+"に"+user.Username+"さんが参加しました")
+	var defaultCannel *discordgo.Channel
+	for _, channel := range channels {
+		if channel.Name == NotifyChannelName {
+			defaultCannel = channel
+			break
+		}
+	}
+
+	if defaultCannel == nil {
+		return
+	}
+
+	fmt.Println("NOTIFY:" + defaultCannel.Name)
+
+	notifyMessageText := joinedChannel.Name + "に" + user.Username + "さんが参加しました"
+	session.ChannelMessageSend(defaultCannel.ID, notifyMessageText)
 	voiceActiveUsers[user.ID] = joinedChannel.ID
+
+	fmt.Println(notifyMessageText)
 }
 
 func getToken() string {
