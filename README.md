@@ -1,4 +1,4 @@
-# Kirishima Kai
+# discord-notify-voice-join
 
 誰かがボイスチャンネルに参加したとき、テキストチャンネルに通知するDiscordのBotです。 
 
@@ -12,7 +12,7 @@ https://discordapp.com/api/oauth2/authorize?client_id=440799039835996170&permiss
 ---
 また、このBotを自身のアプリケーションとして動かすことができます。
 ```
-$ git clone https://github.com/kra8/discord-kirishima-kai.git
+$ git clone https://github.com/kra8/discord-notify-voice-join.git
 $ cd discord-kirishima-kai
 $ go get github.com/bwmarrin/discordgo
 $ make build
