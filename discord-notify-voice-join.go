@@ -3,12 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
-	"time"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -29,7 +27,6 @@ func main() {
 	}
 
 	discord.AddHandler(ready)
-	discord.AddHandler(messageCreate)
 	discord.AddHandler(voiceStateUpdate)
 
 	err = discord.Open()
@@ -38,7 +35,7 @@ func main() {
 	}
 
 	// Wait here until CTRL-C or other term signal is received.
-	fmt.Println("Kirishima is now running.  Press CTRL-C to exit.")
+	fmt.Println("NVJ is now running.  Press CTRL-C to exit.")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 
@@ -52,24 +49,7 @@ func ready(s *discordgo.Session, event *discordgo.Ready) {
 	fmt.Println("now on ready!")
 }
 
-func messageCreate(session *discordgo.Session, message *discordgo.MessageCreate) {
-	if message.Author.ID == session.State.User.ID {
-		return
-	}
-
-	for _, user := range message.Mentions {
-		if user.ID == session.State.User.ID {
-			session.ChannelMessageSend(message.ChannelID, getSerif())
-		}
-	}
-}
-
 func voiceStateUpdate(session *discordgo.Session, voiceState *discordgo.VoiceStateUpdate) {
-	fmt.Println("---")
-	fmt.Println(voiceState.UserID)
-	fmt.Println(voiceState.ChannelID)
-	fmt.Println(voiceState.GuildID)
-
 	// get state updated user
 	user, err := session.User(voiceState.UserID)
 	if err != nil {
@@ -123,16 +103,4 @@ func getToken() string {
 	}
 
 	return strings.Trim(string(text), "\n")
-}
-
-func getSerif() string {
-	serifs := [...]string{
-		"さっ、早くご命令を。司令？",
-		"ご命令を、司令",
-		"そのー、何度もつつかれるのは、何でしょう。新たなコマンドなんでしょうか？",
-		"備えあれば憂いなし、です。",
-	}
-
-	rand.Seed(time.Now().UnixNano())
-	return serifs[rand.Intn(len(serifs))]
 }

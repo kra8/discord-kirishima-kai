@@ -1,9 +1,8 @@
 BUILD_DIR 	:= bin
-NAME 		:= kirishima-kai
-VERSION		:= v1.2.0
+NAME 		:= discord-notify-voice-join
+VERSION		:= v2.0.0
 ZIP_DIR		:= "$(NAME)-$(VERSION)"
 
-.PHONY: build
 build-linux: clean
 	@rm -rf $(ZIP_DIR)
 	@GOOS=linux GOARCH=amd64 go build -o $(BUILD_DIR)/$(NAME)
@@ -20,6 +19,5 @@ run:
 .PHONY: test
 test: build run
 
-.PHONY: clean
 clean:
 	rm -rf ./bin

@@ -15,10 +15,10 @@ https://discordapp.com/api/oauth2/authorize?client_id=440799039835996170&permiss
 $ git clone https://github.com/kra8/discord-notify-voice-join.git
 $ cd discord-notify-voice-join
 $ go get github.com/bwmarrin/discordgo
-$ make build
+$ make linux-build
 $ cp token.example token
 > tokenにあなたのアプリケーションのBot tokenを記述してください
-$ ./bin/kirishima-kai
+$ ./discord-notify-voice-join
 ```
 
 # LICENCE
